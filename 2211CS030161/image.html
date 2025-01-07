@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with Dots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .slider {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #0078d4;
+        }
+
+        .dot:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider" id="slider">
+        <div class="slides" id="slides">
+            <div class="slide">
+                <img src="https://via.placeholder.com/600x400/ff7f7f/333333?text=Slide+1" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/600x400/7f7fff/333333?text=Slide+2" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/600x400/7fff7f/333333?text=Slide+3" alt="Slide 3">
+            </div>
+        </div>
+        <div class="dots" id="dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.getElementById('slides');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalSlides = dots.length;
+        const autoPlayInterval = 3000;
+        let autoPlay;
+
+        function updateSlider(index) {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        function handleDotClick(event) {
+            const index = parseInt(event.target.dataset.index);
+            currentIndex = index;
+            updateSlider(currentIndex);
+            resetAutoPlay();
+        }
+
+        function autoPlaySlider() {
+            autoPlay = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider(currentIndex);
+            }, autoPlayInterval);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlay);
+            autoPlaySlider();
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', handleDotClick);
+        });
+
+        autoPlaySlider();
+    </script>
+</body>
+</html>
