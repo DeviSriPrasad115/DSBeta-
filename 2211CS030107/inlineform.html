@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #007BFF;
+        }
+
+        .form-group .error {
+            color: #ff4d4d;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group .success {
+            color: #28a745;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group input.error-border {
+            border-color: #ff4d4d;
+        }
+
+        .form-group input.success-border {
+            border-color: #28a745;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span class="error" id="emailError">Please enter a valid email address.</span>
+                <span class="success" id="emailSuccess">Looks good!</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span class="error" id="passwordError">Password must be at least 6 characters.</span>
+                <span class="success" id="passwordSuccess">Looks good!</span>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const emailSuccess = document.getElementById('emailSuccess');
+        const passwordSuccess = document.getElementById('passwordSuccess');
+
+        emailInput.addEventListener('input', () => {
+            const email = emailInput.value;
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailInput.classList.remove('error-border');
+                emailInput.classList.add('success-border');
+                emailError.style.display = 'none';
+                emailSuccess.style.display = 'block';
+            } else {
+                emailInput.classList.add('error-border');
+                emailInput.classList.remove('success-border');
+                emailError.style.display = 'block';
+                emailSuccess.style.display = 'none';
+            }
+        });
+
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            if (password.length >= 6) {
+                passwordInput.classList.remove('error-border');
+                passwordInput.classList.add('success-border');
+                passwordError.style.display = 'none';
+                passwordSuccess.style.display = 'block';
+            } else {
+                passwordInput.classList.add('error-border');
+                passwordInput.classList.remove('success-border');
+                passwordError.style.display = 'block';
+                passwordSuccess.style.display = 'none';
+            }
+        });
+
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>
