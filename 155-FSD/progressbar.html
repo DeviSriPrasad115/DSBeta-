@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form with Progress Bar</title>
+    <link rel="stylesheet" href="progressbar.css">
+</head>
+<body>
+    <div class="container">
+        <ul id="progressbar">
+            <li class="active" id="step1">Step 1</li>
+            <li id="step2">Step 2</li>
+            <li id="step3">Step 3</li>
+            <li id="step4">Step 4</li>
+        </ul>
+        <div class="progress">
+            <div class="indicator"></div>
+        </div>
+
+        <form id="multi-step-form">
+            <fieldset class="step active">
+                <h2>Step 1: Personal Information</h2>
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <button type="button" class="next">Next</button>
+            </fieldset>
+
+            <fieldset class="step">
+                <h2>Step 2: Contact Information</h2>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </fieldset>
+
+            <fieldset class="step">
+                <h2>Step 3: Address Details</h2>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="City" required>
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </fieldset>
+
+            <fieldset class="step">
+                <h2>Step 4: Confirmation</h2>
+                <p>Please confirm your information.</p>
+                <button type="button" class="prev">Previous</button>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="progressbar.js"></script>
+</body>
+</html>
