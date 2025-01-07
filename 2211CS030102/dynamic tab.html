@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tab Navigation</title>
+    <link rel="stylesheet" href="dynamictab.css">
+</head>
+<body>
+    <h1>Dynamic Tab Navigation</h1>
+    
+    <div class="tab-container">
+        <!-- Tab Buttons -->
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="tab1">Tab 1</button>
+            <button class="tab-button" data-tab="tab2">Tab 2</button>
+            <button class="tab-button" data-tab="tab3">Tab 3</button>
+        </div>
+        
+        <!-- Tab Content Sections -->
+        <div class="tab-content active" id="tab1">
+            <h2>The Serene Beauty of the Sea</h2>
+            <p>The sea has always been a source of inspiration and awe for many. In the picture showcased in Tab 2, we see a stunning view of the sea with crystal-clear water, calm waves, and a peaceful horizon. This image captures the essence of tranquility that the sea offers, making it a perfect escape from the hustle and bustle of daily life.</p>
+            <p>The serene atmosphere of the sea is not just visually appealing but also has a calming effect on the mind and soul. The sound of the waves, the gentle breeze, and the endless expanse of water have a meditative quality that many find soothing and refreshing.</p>
+            <p>Such images remind us of the beauty of nature and the importance of preserving these pristine environments. Whether for a relaxing vacation or a quick getaway, the sea continues to be a favorite destination for those seeking peace and rejuvenation.</p>
+        </div>
+        
+        
+        <div class="tab-content" id="tab2">
+            <img src="c:\Users\nandi\AppData\Local\Microsoft\Windows\INetCache\IE\TLYN0D6B\sea-4420591_1920 (1)[1].jpg" alt="Sample Image">
+        </div>
+        
+        <div class="tab-content" id="tab3">
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+        
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+        
+                <label for="feedback">Feedback:</label><br>
+                <textarea id="feedback" name="feedback" placeholder="Enter your feedback" required></textarea><br>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
+    </div>
+    
+    <script src="dynamictab.js"></script>
+</body>
+</html>
