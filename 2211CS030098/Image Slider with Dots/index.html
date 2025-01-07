@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with Dots</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Page Setup */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .dot:hover {
+            background-color: #f39c12;
+            transform: scale(1.2);
+        }
+
+        .active-dot {
+            background-color: #f39c12;
+        }
+
+        /* Image hover effects */
+        .slider img:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img src="https://via.placeholder.com/600x400/FF5733/fff?text=Image+1" alt="Image 1">
+            <img src="https://via.placeholder.com/600x400/33FF57/fff?text=Image+2" alt="Image 2">
+            <img src="https://via.placeholder.com/600x400/3357FF/fff?text=Image+3" alt="Image 3">
+        </div>
+        <div class="dots">
+            <div class="dot" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const slider = document.querySelector('.slider');
+        const dots = document.querySelectorAll('.dot');
+        const images = document.querySelectorAll('.slider img');
+
+        let currentSlide = 0;
+        const totalSlides = images.length;
+
+        // Function to change slide
+        function changeSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateActiveDot();
+        }
+
+        // Update active dot
+        function updateActiveDot() {
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active-dot');
+                if (index === currentSlide) {
+                    dot.classList.add('active-dot');
+                }
+            });
+        }
+
+        // Auto-play the slider every 3 seconds
+        function autoPlay() {
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                changeSlide(currentSlide);
+            }, 3000);
+        }
+
+        // Add event listeners to the dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                changeSlide(slideIndex);
+            });
+        });
+
+        // Initialize the slider
+        changeSlide(currentSlide);
+        autoPlay(); // Start auto-play
+
+    </script>
+
+</body>
+</html>

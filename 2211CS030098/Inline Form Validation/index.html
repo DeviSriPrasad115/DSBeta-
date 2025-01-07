@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Form Validation</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f7fc;
+      margin: 0;
+    }
+
+    .form-container {
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Error and Success Styles */
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .success {
+      color: green;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Login Form</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <div id="emailFeedback" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <div id="passwordFeedback" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" id="submitBtn">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Validate email and password fields in real-time
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+    const emailFeedback = document.getElementById('emailFeedback');
+    const passwordFeedback = document.getElementById('passwordFeedback');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Email validation function
+    function validateEmail() {
+      const emailValue = emailField.value;
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+      if (emailValue === '') {
+        emailFeedback.textContent = 'Email is required';
+        emailFeedback.classList.add('error');
+        emailFeedback.classList.remove('success');
+      } else if (!emailPattern.test(emailValue)) {
+        emailFeedback.textContent = 'Invalid email format';
+        emailFeedback.classList.add('error');
+        emailFeedback.classList.remove('success');
+      } else {
+        emailFeedback.textContent = 'Valid email';
+        emailFeedback.classList.add('success');
+        emailFeedback.classList.remove('error');
+      }
+    }
+
+    // Password validation function
+    function validatePassword() {
+      const passwordValue = passwordField.value;
+      
+      if (passwordValue === '') {
+        passwordFeedback.textContent = 'Password is required';
+        passwordFeedback.classList.add('error');
+        passwordFeedback.classList.remove('success');
+      } else if (passwordValue.length < 6) {
+        passwordFeedback.textContent = 'Password must be at least 6 characters';
+        passwordFeedback.classList.add('error');
+        passwordFeedback.classList.remove('success');
+      } else {
+        passwordFeedback.textContent = 'Valid password';
+        passwordFeedback.classList.add('success');
+        passwordFeedback.classList.remove('error');
+      }
+    }
+
+    // Event listeners for real-time validation
+    emailField.addEventListener('input', validateEmail);
+    passwordField.addEventListener('input', validatePassword);
+
+    // Form submission (prevent actual submit to show the validation result)
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Final validation check before submission
+      validateEmail();
+      validatePassword();
+
+      if (emailFeedback.classList.contains('success') && passwordFeedback.classList.contains('success')) {
+        alert('Form Submitted Successfully!');
+      } else {
+        alert('Please fix the errors before submitting.');
+      }
+    });
+  </script>
+
+</body>
+</html>
