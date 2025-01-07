@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .tab-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab:hover {
+    color: #007BFF;
+  }
+  
+  .tab.active {
+    color: #007BFF;
+    font-weight: bold;
+    border-bottom: 2px solid #007BFF;
+  }
+  
+  .content {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .content.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
