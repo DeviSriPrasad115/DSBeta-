@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e3f2fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dropdown-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .dropdown {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #42a5f5;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .dropdown .selected {
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #bbdefb;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .dropdown .selected:hover {
+            background: #90caf9;
+        }
+
+        .dropdown .selected span {
+            font-size: 16px;
+        }
+
+        .dropdown .selected .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.open .selected .icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #42a5f5;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .dropdown.open .dropdown-options {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .dropdown-options div {
+            padding: 10px 15px;
+            background: #e3f2fd;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            color: #0d47a1;
+        }
+
+        .dropdown-options div:hover {
+            background: #90caf9;
+            color: #ffffff;
+        }
+
+        .selected-value {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown-container">
+        <div class="dropdown" id="dropdown">
+            <div class="selected">
+                <span>Select an option</span>
+                <span class="icon">&#9662;</span>
+            </div>
+            <div class="dropdown-options">
+                <div data-value="Option 1">Option 1</div>
+                <div data-value="Option 2">Option 2</div>
+                <div data-value="Option 3">Option 3</div>
+                <div data-value="Option 4">Option 4</div>
+            </div>
+        </div>
+        <div class="selected-value" id="selectedValue">Selected: None</div>
+    </div>
+
+    <script>
+        const dropdown = document.getElementById('dropdown');
+        const selected = dropdown.querySelector('.selected span');
+        const options = dropdown.querySelector('.dropdown-options');
+        const selectedValue = document.getElementById('selectedValue');
+
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('open');
+        });
+
+        options.addEventListener('click', (e) => {
+            if (e.target && e.target.nodeName === 'DIV') {
+                selected.textContent = e.target.dataset.value;
+                selectedValue.textContent = `Selected: ${e.target.dataset.value}`;
+                dropdown.classList.remove('open');
+            }
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
