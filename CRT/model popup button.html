@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Popup</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Button Style */
+        .open-modal-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .open-modal-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Modal Box */
+        .modal-box {
+            background-color: #fff;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-box h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .modal-box p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Close Button in Modal */
+        .close-btn {
+            padding: 5px 10px;
+            background-color: #FF5733;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #c13c1f;
+        }
+
+        /* Modal Active States */
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button to Open Modal -->
+    <button class="open-modal-btn">Open Modal</button>
+
+    <!-- Modal Overlay and Modal Box -->
+    <div class="modal-overlay">
+        <div class="modal-box">
+            <h2>Modal Title</h2>
+            <p>This is a simple modal with a smooth transition effect.</p>
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the button, modal overlay, and close button
+        const openModalBtn = document.querySelector('.open-modal-btn');
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const closeModalBtn = document.querySelector('.close-btn');
+
+        // Function to open the modal
+        openModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
+            setTimeout(() => {
+                document.querySelector('.modal-box').classList.add('active');
+            }, 100); // Delay to ensure the overlay shows first
+        });
+
+        // Function to close the modal
+        closeModalBtn.addEventListener('click', () => {
+            document.querySelector('.modal-box').classList.remove('active');
+            modalOverlay.classList.remove('active');
+        });
+
+        // Close modal if clicking outside of the modal box
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModalBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>
