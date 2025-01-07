@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Navigation Bar with Scroll Highlight</title>
+    <style>
+        /* Reset margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar Style */
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+            transform: scale(1.1);
+        }
+
+        /* Section Styles */
+        section {
+            height: 100vh;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        section:nth-child(odd) {
+            background-color: #f4f4f4;
+        }
+
+        section:nth-child(even) {
+            background-color: #e1e1e1;
+        }
+
+        /* Active Link Highlight */
+        .active {
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="home">
+        <h1>Home Section</h1>
+    </section>
+
+    <section id="about">
+        <h1>About Section</h1>
+    </section>
+
+    <section id="services">
+        <h1>Services Section</h1>
+    </section>
+
+    <section id="contact">
+        <h1>Contact Section</h1>
+    </section>
+
+    <script>
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('nav ul li a');
+        
+        // Function to highlight active link based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Remove active class from all links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
