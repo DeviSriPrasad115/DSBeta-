@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Navigation Bar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navigation bar styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #007acc;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #005fa3;
+      transform: scale(1.1);
+    }
+
+    .navbar a.active {
+      background-color: #005fa3;
+    }
+
+    /* Section styles */
+    section {
+      height: 100vh;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    #home { background-color: #fff0f9; }
+    #about { background-color: #168a1d; }
+    #services { background-color: #f713b2; }
+    #contact { background-color: #0b68e0; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div class="navbar">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- Sections -->
+<section id="home">
+  <h1>Home</h1>
+</section>
+<section id="about">
+  <h1>About</h1>
+</section>
+<section id="services">
+  <h1>Services</h1>
+</section>
+<section id="contact">
+  <h1>Contact</h1>
+</section>
+
+<script>
+  const navbarLinks = document.querySelectorAll('.navbar a');
+  const sections = document.querySelectorAll('section');
+
+  // Highlight the active link on scroll
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 60;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navbarLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
