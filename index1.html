@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Menu</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        /* Accordion Container */
+        .accordion-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        /* Accordion Section */
+        .accordion-section {
+            border-bottom: 1px solid #ddd;
+        }
+        /* Accordion Header */
+        .accordion-header {
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #0056b3;
+        }
+        /* Arrow Icon */
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .rotate {
+            transform: rotate(180deg);
+        }
+        /* Accordion Content */
+        .accordion-content {
+            padding: 15px;
+            background-color: #f9f9f9;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+        /* Show content when active */
+        .active .accordion-content {
+            max-height: 200px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Accordion Container -->
+    <div class="accordion-container">
+        <!-- Accordion Section 1 -->
+        <div class="accordion-section">
+            <div class="accordion-header">
+                Section 1
+                <span class="arrow">&#9660;</span> <!-- Downward arrow -->
+            </div>
+            <div class="accordion-content">
+                <p>This is the content of Section 1. You can hide or show this content by clicking the header above.</p>
+            </div>
+        </div>
+        <!-- Accordion Section 2 -->
+        <div class="accordion-section">
+            <div class="accordion-header">
+                Section 2
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="accordion-content">
+                <p>This is the content of Section 2. The content visibility toggles with the arrow icon.</p>
+            </div>
+        </div>
+        <!-- Accordion Section 3 -->
+        <div class="accordion-section">
+            <div class="accordion-header">
+                Section 3
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="accordion-content">
+                <p>This is the content of Section 3. You can click on the header to toggle the visibility of this content.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get all accordion headers and contents
+        const headers = document.querySelectorAll('.accordion-header');
+        // Add event listener to each header
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement; // Get the accordion section
+                const content = section.querySelector('.accordion-content');
+                const arrow = header.querySelector('.arrow');
+                // Toggle active class on the section
+                section.classList.toggle('active');
+                // Rotate the arrow icon based on section visibility
+                if (section.classList.contains('active')) {
+                    arrow.classList.add('rotate');
+                } else {
+                    arrow.classList.remove('rotate');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
