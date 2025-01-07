@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown Menu</title>
+    <link rel="stylesheet" href="dropdown.css">
+</head>
+<body>
+    <div class="dropdown">
+        <button class="dropdown-btn">Select temperature</button>
+        <div class="dropdown-content">
+            <a href="#" data-value="Option 1">Hot</a>
+            <a href="#" data-value="Option 2">Cold</a>
+            <a href="#" data-value="Option 3">warm</a>
+            <a href="#" data-value="Option 4">humid</a>
+        </div>
+    </div>
+
+    <div id="selected-value">
+        Selected: <span>None</span>
+    </div>
+
+    <script src="dropdown.js"></script>
+</body>
+</html>
