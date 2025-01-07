@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown Menu</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Dropdown Container */
+    .dropdown {
+      position: relative;
+      width: 250px;
+    }
+
+    /* Dropdown Header */
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-header:hover {
+      background-color: #f9f9f9;
+    }
+
+    .dropdown-header .arrow {
+      transition: transform 0.3s ease;
+      font-size: 12px;
+    }
+
+    /* Dropdown List */
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .dropdown-list li {
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-list li:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Active State */
+    .dropdown.active .dropdown-list {
+      max-height: 200px; /* Adjust based on content */
+      opacity: 1;
+    }
+
+    .dropdown.active .dropdown-header .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Selected Value Display */
+    .selected-value {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dropdown Container -->
+  <div class="dropdown">
+    <!-- Dropdown Header -->
+    <div class="dropdown-header" id="dropdownHeader">
+      <span>Select an option</span>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <!-- Dropdown List -->
+    <ul class="dropdown-list" id="dropdownList">
+      <li data-value="option1">Option 1</li>
+      <li data-value="option2">Option 2</li>
+      <li data-value="option3">Option 3</li>
+      <li data-value="option4">Option 4</li>
+    </ul>
+  </div>
+
+  <!-- Selected Value Display -->
+  <div class="selected-value">
+    <strong>Selected Value:</strong> <span id="selectedValue">None</span>
+  </div>
+
+  <script>
+    // Get elements
+    const dropdownHeader = document.getElementById("dropdownHeader");
+    const dropdownList = document.getElementById("dropdownList");
+    const selectedValue = document.getElementById("selectedValue");
+
+    // Toggle dropdown visibility
+    dropdownHeader.addEventListener("click", function () {
+      dropdownHeader.parentElement.classList.toggle("active");
+    });
+
+    // Handle option selection
+    dropdownList.addEventListener("click", function (e) {
+      if (e.target.tagName === "LI") {
+        // Update selected value
+        selectedValue.textContent = e.target.textContent;
+
+        // Update dropdown header
+        dropdownHeader.querySelector("span").textContent = e.target.textContent;
+
+        // Close dropdown
+        dropdownHeader.parentElement.classList.remove("active");
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!dropdownHeader.contains(e.target) && !dropdownList.contains(e.target)) {
+        dropdownHeader.parentElement.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+</html>

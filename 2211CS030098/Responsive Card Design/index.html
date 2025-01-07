@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Anime Cards</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the styles.css file -->
+</head>
+<body>
+    <div class="maincontainer">
+        <h2>ANIME</h2>
+        <hr>
+        <div class="container">
+            <div id="movies" class="row"></div>
+        </div>
+        <hr>
+
+        <div class="container" id="TV-shows">
+            <!-- Death Note Poster -->
+            <div class="poster">
+                <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                        <div class="flip-card-front_i">
+                            <img src="dethnote.jpg" alt="Death Note" style="width:250px;height:360px;">
+                        </div>
+                        <div class="flip-card-back_i">
+                            <h1>Death Note</h1>
+                            <div class="btnContainer">
+                                <button class="btn_i b3_i" title="Year" style="color:white" onclick="toggleDetails('deathnote-details')">2006</button>
+                                <button class="btn_i b2_i" title="Episodes" style="color:white" onclick="toggleDetails('deathnote-details')">37</button>
+                                <button class="btn_i b1_i" title="IMDb" style="color:white" onclick="toggleDetails('deathnote-details')">9.0</button>
+                            </div>
+                            <div id="deathnote-details" class="anime-details">
+                                <p>An intelligent high school student goes on a secret crusade to eliminate criminals from the world after discovering a notebook capable of killing anyone whose name is written into it.</p>
+                                <button class="trailer_i" type="button" onclick="openWin('https://youtu.be/NlJZ-YgAt-c')">▶Trailer</button>
+                                <br>
+                                <button class="b4_i">▶Play</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flim">
+                        <b>Death Note</b>
+                        <br>
+                        IMDb - 9.0
+                    </div>
+                </div>
+            </div>
+
+            <!-- Naruto Poster -->
+            <div class="poster">
+                <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                        <div class="flip-card-front_i">
+                            <img src="naruto.jpg" alt="Naruto" style="width:250px;height:360px;">
+                        </div>
+                        <div class="flip-card-back_i">
+                            <h1>Naruto</h1>
+                            <div class="btnContainer">
+                                <button class="btn_i b3_i" title="Year" style="color:white" onclick="toggleDetails('naruto-details')">2002</button>
+                                <button class="btn_i b2_i" title="Episodes" style="color:white" onclick="toggleDetails('naruto-details')">220</button>
+                                <button class="btn_i b1_i" title="IMDb" style="color:white" onclick="toggleDetails('naruto-details')">8.3</button>
+                            </div>
+                            <div id="naruto-details" class="anime-details">
+                                <p>Naruto Uzumaki is a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the village leader.</p>
+                                <button class="trailer_i" type="button" onclick="openWin('https://youtu.be/3pWZ0V5iY5Y')">▶Trailer</button>
+                                <br>
+                                <button class="b4_i">▶Play</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flim">
+                        <b>Naruto</b>
+                        <br>
+                        IMDb - 8.3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to the script.js file -->
+</body>
+</html>
