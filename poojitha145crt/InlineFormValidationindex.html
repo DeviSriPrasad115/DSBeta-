@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Form Validation</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to Custom CSS -->
+    <link rel="stylesheet" href="IFVstyles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">User Login Form</h2>
+        <form id="loginForm" class="p-4 rounded shadow-lg" novalidate>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+            </div>
+            <div class="mb-3">
+                <div id="successMessage" class="text-success"></div>
+                <div id="errorMessage" class="text-danger"></div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Link to Custom JS -->
+    <script src="IFVscript.js"></script>
+</body>
+
+</html>

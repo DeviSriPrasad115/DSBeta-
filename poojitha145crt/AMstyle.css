@@ -1,0 +1,71 @@
+/* Set the full-screen background image */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240515/pngtree-flying-grilled-chicken-drumsticks-restaurant-menu-background-with-copy-space-image_15763566.jpg');
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the accordion container */
+.accordion {
+  width: 80%; /* Adjust as needed */
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for readability */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for each accordion item */
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+  padding: 10px;
+}
+
+/* Accordion header styling */
+.accordion-header {
+  background-color: #f5f5f5;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-header:hover {
+  background-color: #e0e0e0;
+}
+
+.accordion-header .arrow {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Accordion content styling */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 10px;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* Adjust as needed */
+  padding: 10px;
+}
+
+.accordion-item.active .accordion-header {
+  background-color: #e0e0e0;
+}

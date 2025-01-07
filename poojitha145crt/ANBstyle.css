@@ -1,0 +1,211 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ADD8E6; /* Light blue background */
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+    margin-top: 70px;
+}
+
+/* Navbar Styles */
+nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 100;
+    padding: 15px;
+    border-bottom: 2px solid #f39c12;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+nav ul li {
+    margin: 0 20px;
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Animated hover effect */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #f39c12;
+    left: 50%;
+    bottom: -5px;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Highlight the active link in the navbar */
+nav ul li a.active {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* Section Styles */
+section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+
+/* Section content styling */
+.section-content {
+    z-index: 2;
+    position: relative;
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Apply text animation for hover */
+.section-content h1,
+.section-content p {
+    opacity: 0.8;
+    transform: translateY(30px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.section-content:hover h1,
+.section-content:hover p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.section-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.section-content p {
+    font-size: 1.5em;
+}
+
+/* Background images with transparency overlay for each section */
+#home {
+    background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'); /* Stunning Landscape */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+    z-index: 1;
+}
+
+#about {
+    background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+    z-index: 1;
+}
+
+#services {
+    background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+    z-index: 1;
+}
+
+#contact {
+    background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+    z-index: 1;
+}
+
+/* Active section highlight */
+.active {
+    background-color: rgba(0, 123, 255, 0.8); /* Light blue background for active section */
+}
+
+/* Optional smooth scrolling effect */
+html {
+    scroll-behavior: smooth;
+}
