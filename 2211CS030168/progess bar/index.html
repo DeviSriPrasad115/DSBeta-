@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Step Form with Progress Bar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="form-container">
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <form id="multi-step-form">
+
+    <div class="form-step" id="step-1">
+      <h2>Step 1: Personal Info</h2>
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <button type="button" class="next-btn" onclick="nextStep(1)">Next</button>
+    </div>
+
+
+    <div class="form-step" id="step-2">
+      <h2>Step 2: Contact Info</h2>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <button type="button" class="prev-btn" onclick="prevStep(2)">Previous</button>
+      <button type="button" class="next-btn" onclick="nextStep(2)">Next</button>
+    </div>
+
+   
+    <div class="form-step" id="step-3">
+      <h2>Step 3: Address</h2>
+      <input type="text" placeholder="Street Address" required>
+      <input type="text" placeholder="City" required>
+      <button type="button" class="prev-btn" onclick="prevStep(3)">Previous</button>
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

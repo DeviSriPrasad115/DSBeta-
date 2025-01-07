@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tab-header">
+      <button class="tab-link active" data-tab="profile">Profile</button>
+      <button class="tab-link" data-tab="settings">Settings</button>
+      <button class="tab-link" data-tab="notifications">Notifications</button>
+    </div>
+    <div class="tab-content" id="profile">
+      <h2>User Profile</h2>
+      <p><strong>Username:</strong> Mamatha</p>
+      <p><strong>Email:</strong> 2211CS030168@mallareddyuniversity.ac.in</p>
+    </div>
+    <div class="tab-content hidden" id="settings">
+      <h2>Account Settings</h2>
+      <p><strong>Change Password:</strong> Click <a href="#">here</a> to reset your password.</p>
+      <p><strong>Email Preferences:</strong> Manage your email notifications.</p>
+    </div>
+    <div class="tab-content hidden" id="notifications">
+      <h2>Notifications</h2>
+      <ul>
+        <li>No new Notifications</li>
+
+      </ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

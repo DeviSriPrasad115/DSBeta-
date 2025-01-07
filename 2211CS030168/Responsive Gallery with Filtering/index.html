@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Tags</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="tag-filters">
+  <button class="filter-btn" data-tag="nature">Nature</button>
+  <button class="filter-btn" data-tag="animals">Animals</button>
+  <button class="filter-btn" data-tag="all">All</button>
+</div>
+
+<div class="gallery">
+  <div class="gallery-item" data-tags="nature">
+    <img src="nature1.jpg" alt="Nature 1">
+  </div>
+  <div class="gallery-item" data-tags="nature">
+    <img src="nature2.jpg" alt="Nature 2">
+  </div>
+  <div class="gallery-item" data-tags="animals">
+    <img src="animal1.jpg" alt="Animal 1">
+  </div>
+  <div class="gallery-item" data-tags="animals">
+    <img src="animal2.jpg" alt="Animal 2">
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
