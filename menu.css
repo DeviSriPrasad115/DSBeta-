@@ -1,0 +1,60 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .accordion {
+    width: 300px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .accordion-section {
+    border-top: 1px solid #ddd;
+  }
+  
+  .accordion-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion-header:hover {
+    background-color: #0056b3;
+  }
+  
+  .accordion-content {
+    padding: 0 15px;
+    display: none;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  /* Arrow rotation */
+  .accordion-header.active .arrow {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-content.active {
+    display: block;
+    max-height: 1000px; /* Arbitrary large value to allow content to expand */
+  }
