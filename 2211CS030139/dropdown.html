@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Navigation</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            width: 0;
+            animation: typing 4s steps(12, end), blink 0.8s step-end infinite alternate;
+        }
+
+        /* Typewriter Effect */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 12ch; /* Adjust to match "University" */
+            }
+        }
+
+        @keyframes blink {
+            from {
+                border-color: white;
+            }
+            to {
+                border-color: transparent;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Home */
+        .nav-home {
+            background-color: #0066cc;
+        }
+
+        .nav-home:hover {
+            background-color: #0052a3;
+        }
+
+        /* Students */
+        .nav-students {
+            background-color: #ff6600;
+        }
+
+        .nav-students:hover {
+            background-color: #cc5200;
+        }
+
+        /* Academics */
+        .nav-academics {
+            background-color: #28a745;
+        }
+
+        .nav-academics:hover {
+            background-color: #1e7e34;
+        }
+
+        /* Examination */
+        .nav-exams {
+            background-color: #dc3545;
+        }
+
+        .nav-exams:hover {
+            background-color: #b02a37;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            background-color: #444;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            background-color: #444;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            background-color: white;
+            height: 3px;
+            width: 25px;
+            margin: 3px 0;
+        }
+
+        .nav-links.mobile {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .nav-links.mobile.active {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>University</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-home">Home</a>
+            <div class="dropdown">
+                <a href="#" class="nav-students" onclick="toggleDropdown(event, 'students')">Students</a>
+                <div id="students" class="dropdown-content">
+                    <a href="#">Admissions</a>
+                    <a href="#">Results</a>
+                    <a href="#">Clubs</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-academics" onclick="toggleDropdown(event, 'academics')">Academics</a>
+                <div id="academics" class="dropdown-content">
+                    <a href="#">Courses</a>
+                    <a href="#">Faculty</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-exams" onclick="toggleDropdown(event, 'exams')">Examination</a>
+                <div id="exams" class="dropdown-content">
+                    <a href="#">Schedule</a>
+                    <a href="#">Policies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle menu for mobile view
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile');
+            navLinks.classList.toggle('active');
+        }
+
+        // Toggle dropdown menus
+        function toggleDropdown(event, id) {
+            event.preventDefault();
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
