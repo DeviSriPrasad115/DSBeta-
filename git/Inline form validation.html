@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Form Validation</title>
+  <style>
+    /* Basic reset and form styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    /* Error and success message styling */
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .success-message {
+      color: green;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    /* Field styling for valid and invalid input */
+    input.invalid {
+      border-color: red;
+    }
+
+    input.valid {
+      border-color: green;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <form id="myForm">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <div id="email-error" class="error-message"></div>
+        <div id="email-success" class="success-message"></div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <div id="password-error" class="error-message"></div>
+        <div id="password-success" class="success-message"></div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Form validation logic
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+    const emailSuccess = document.getElementById('email-success');
+    const passwordSuccess = document.getElementById('password-success');
+
+    // Regular expressions for validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // At least 6 characters, including a letter and a number
+
+    // Function to validate email
+    function validateEmail() {
+      const email = emailField.value;
+      if (!email) {
+        emailField.classList.remove('valid', 'invalid');
+        emailError.textContent = '';
+        emailSuccess.textContent = '';
+        return false;
+      }
+      if (emailRegex.test(email)) {
+        emailField.classList.add('valid');
+        emailField.classList.remove('invalid');
+        emailSuccess.textContent = 'Valid email address!';
+        emailError.textContent = '';
+        return true;
+      } else {
+        emailField.classList.add('invalid');
+        emailField.classList.remove('valid');
+        emailSuccess.textContent = '';
+        emailError.textContent = 'Please enter a valid email address.';
+        return false;
+      }
+    }
+
+    // Function to validate password
+    function validatePassword() {
+      const password = passwordField.value;
+      if (!password) {
+        passwordField.classList.remove('valid', 'invalid');
+        passwordError.textContent = '';
+        passwordSuccess.textContent = '';
+        return false;
+      }
+      if (passwordRegex.test(password)) {
+        passwordField.classList.add('valid');
+        passwordField.classList.remove('invalid');
+        passwordSuccess.textContent = 'Strong password!';
+        passwordError.textContent = '';
+        return true;
+      } else {
+        passwordField.classList.add('invalid');
+        passwordField.classList.remove('valid');
+        passwordSuccess.textContent = '';
+        passwordError.textContent = 'Password must be at least 6 characters long and contain both letters and numbers.';
+        return false;
+      }
+    }
+
+    // Enable submit button if both fields are valid
+    function checkFormValidity() {
+      if (validateEmail() && validatePassword()) {
+        submitBtn.disabled = false;
+      } else {
+        submitBtn.disabled = true;
+      }
+    }
+
+    // Event listeners for real-time validation
+    emailField.addEventListener('input', () => {
+      validateEmail();
+      checkFormValidity();
+    });
+
+    passwordField.addEventListener('input', () => {
+      validatePassword();
+      checkFormValidity();
+    });
+
+    // Optional: Submit form action (you can replace this with an actual form submission)
+    document.getElementById('myForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (validateEmail() && validatePassword()) {
+        alert('Form Submitted Successfully!');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Flip Card</title>
+  <style>
+    /* Basic reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    /* Container for the card */
+    .card-container {
+      perspective: 1000px; /* Enables the 3D flip effect */
+    }
+
+    /* Card style */
+    .card {
+      width: 250px;
+      height: 350px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    /* Card front */
+    .card .front, .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Front of the card */
+    .card .front {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+    }
+
+    .card .front img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .card .front h2 {
+      margin: 10px 0;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .card .front button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .card .front button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Back of the card */
+    .card .back {
+      background-color: #f1f1f1;
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .card .back h3 {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Hover effect */
+    .card-container:hover .card {
+      transform: rotateY(180deg);
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 600px) {
+      .card {
+        width: 200px;
+        height: 300px;
+      }
+
+      .card .front h2 {
+        font-size: 18px;
+      }
+      
+      .card .back h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="card" id="card">
+      <div class="front">
+        <img src="https://via.placeholder.com/250x150" alt="Image">
+        <h2>Card Title</h2>
+        <button onclick="toggleFlip()">More Info</button>
+      </div>
+      <div class="back">
+        <h3>This is the back side with more information.</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle the flipped state
+    function toggleFlip() {
+      const card = document.getElementById('card');
+      card.style.transform = card.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+    }
+  </script>
+
+</body>
+</html>

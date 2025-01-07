@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Navigation Bar</title>
+  <style>
+    /* Reset basic styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation bar styles */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    /* Navigation links */
+    .nav-links {
+      display: flex;
+      justify-content: space-around;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .nav-links a:hover {
+      color: #f0f0f0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 3px;
+      background-color: #f0f0f0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Highlight active link */
+    .active {
+      color: #ff6347; /* Tomato color for active link */
+    }
+
+    /* Main content sections */
+    section {
+      padding: 100px 20px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 24px;
+      transition: background-color 0.3s ease;
+    }
+
+    section:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+
+    section:nth-child(odd) {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Sections for scrolling -->
+  <section id="home">Welcome to the Home section</section>
+  <section id="about">About us</section>
+  <section id="services">Our Services</section>
+  <section id="contact">Contact Information</section>
+
+  <script>
+    // Highlight active section on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Function to highlight active link based on scroll position
+    function highlightActiveLink() {
+      let scrollPosition = window.scrollY;
+
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop - 50;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          // Remove 'active' class from all links
+          navLinks.forEach(link => link.classList.remove('active'));
+
+          // Add 'active' class to the corresponding link
+          navLinks[index].classList.add('active');
+        }
+      });
+    }
+
+    // Event listener for scroll
+    window.addEventListener('scroll', highlightActiveLink);
+
+    // Smooth scroll to sections when clicking links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop - 50, // Offset to avoid nav bar overlap
+          behavior: 'smooth',
+        });
+      });
+    });
+
+    // Initial call to highlight active link on page load
+    highlightActiveLink();
+  </script>
+
+</body>
+</html>
