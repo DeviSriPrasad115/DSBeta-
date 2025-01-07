@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 200px;
+        }
+
+        .dropdown-header {
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-header span {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .dropdown-header .arrow {
+            transition: transform 0.3s;
+        }
+
+        .dropdown.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.3s ease;
+            z-index: 100;
+        }
+
+        .dropdown.open .dropdown-menu {
+            max-height: 200px;
+        }
+
+        .dropdown-menu .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-menu .dropdown-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dropdown">
+    <div class="dropdown-header" id="dropdown-header">
+        <span id="selected-value">Select an option</span>
+        <div class="arrow">&#9662;</div>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu">
+        <div class="dropdown-item">Option 1</div>
+        <div class="dropdown-item">Option 2</div>
+        <div class="dropdown-item">Option 3</div>
+        <div class="dropdown-item">Option 4</div>
+    </div>
+</div>
+
+<script>
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownHeader = document.querySelector('#dropdown-header');
+    const dropdownMenu = document.querySelector('#dropdown-menu');
+    const selectedValue = document.querySelector('#selected-value');
+
+    dropdownHeader.addEventListener('click', () => {
+        dropdown.classList.toggle('open');
+    });
+
+    dropdownMenu.addEventListener('click', (event) => {
+        if (event.target.classList.contains('dropdown-item')) {
+            selectedValue.textContent = event.target.textContent;
+            dropdown.classList.remove('open');
+        }
+    });
+
+    // Close the dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
+</script>
+
+</body>
+</html>
