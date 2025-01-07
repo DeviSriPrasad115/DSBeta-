@@ -1,0 +1,54 @@
+/* Basic styling for form and input fields */
+body {
+  background-image: url("https://img.freepik.com/premium-photo/flat-lay-top-view-workspace-office-yellow-desk-with-laptop-computer-coffee-cup-phone-background_44289-1198.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.form-control {
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Styling for error/success messages */
+.invalid-feedback {
+  font-size: 0.9rem;
+  display: none;
+  margin-top: 5px;
+}
+
+.valid-feedback {
+  font-size: 0.9rem;
+  color: green;
+  margin-top: 5px;
+}
+
+input:valid {
+  border-color: green;
+}
+
+input:invalid {
+  border-color: red;
+}

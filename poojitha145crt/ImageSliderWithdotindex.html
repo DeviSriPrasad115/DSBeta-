@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Image Carousel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://png.pngtree.com/thumb_back/fw800/background/20241106/pngtree-vibrant-forest-and-crystal-clear-reflections-in-photorealistic-mountain-landscape-image_16528951.jpg"
+             class="d-block w-100" alt="Landscape View">
+        <div class="carousel-caption">
+          <h5 class="landscape">Landscape View</h5>
+          <p>Breathtaking mountains and serene landscapes.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.pexels.com/photos/29812789/pexels-photo-29812789.jpeg?cs=srgb&dl=pexels-szafran-29812789.jpg&fm=jpg"
+             class="d-block w-100" alt="Lake View">
+        <div class="carousel-caption">
+          <h5 class="lake">Lake View</h5>
+          <p>Peaceful waters reflecting the blue sky.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.freepik.com/premium-photo/orange-yellow-sunset-sky-water-mirror-nature-landscape-beautiful-nature-sunset-landscape-yellow-orange-sunset-sky-with-clouds-sun-sun-burst-rays_1028938-138657.jpg"
+             class="d-block w-100" alt="Sunset View">
+        <div class="carousel-caption">
+          <h5 class="subset">Sunset View</h5>
+          <p>Amazing sunsets over the horizon.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
