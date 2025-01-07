@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider with Dots</title>
+  <style>
+    /* Basic reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    /* Slider container */
+    .slider-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    /* Images in the slider */
+    .slider-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slider-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Navigation dots */
+    .dots-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dot:hover {
+      background-color: #fff;
+    }
+
+    .active {
+      background-color: #fff;
+    }
+
+    /* Hover effect for slider images */
+    .slider-images img:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Slider Container -->
+  <div class="slider-container">
+    <div class="slider-images">
+      <img src="https://wallpaperaccess.com/full/1728969.jpg" alt="Image 1">
+      <img src="https://wallpapercave.com/wp/wp2060730.jpg" alt="Image 2">
+      <img src="https://wallpaperaccess.com/full/1729052.jpg" alt="Image 3">
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="dots-container">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for image slider functionality
+
+    const images = document.querySelectorAll('.slider-images img');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let slideInterval;
+
+    // Function to change the slide based on index
+    function changeSlide(index) {
+      const offset = -index * 100; // Move images by 100% width for each index
+      document.querySelector('.slider-images').style.transform = `translateX(${offset}%)`;
+
+      // Update active dot
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
+
+    // Function to automatically cycle through images
+    function startAutoSlide() {
+      slideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        changeSlide(currentIndex);
+      }, 3000); // Change image every 3 seconds
+    }
+
+    // Stop auto-slide when hovering over the slider
+    document.querySelector('.slider-container').addEventListener('mouseover', () => {
+      clearInterval(slideInterval);
+    });
+
+    // Restart auto-slide when the mouse leaves the slider
+    document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
+
+    // Add click event to dots to change image
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        changeSlide(currentIndex);
+      });
+    });
+
+    // Initialize the slider
+    changeSlide(currentIndex);
+    startAutoSlide(); // Start auto sliding
+  </script>
+
+</body>
+</html>
