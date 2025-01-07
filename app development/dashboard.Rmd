@@ -1,0 +1,79 @@
+---
+title:"social media dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    social: ["instagram"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(knitr)
+library(DT)
+library(rpivotTable)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(openintro)
+library(highcharter)
+```
+
+```{r}
+data<-read.csv("dataset.csv")
+data
+```
+
+```{r}
+mycolors<-c("blue","#FFC125","darkgreen","darkorange")
+```
+
+Interactive Data Visualization
+============================================
+
+row
+--------------------------------------------
+
+###Influencer Analysis
+
+```{r}
+valueBox(paste("Influencer Score"),
+         color = "warning")
+```
+
+
+### influencer in India
+
+```{r}
+valueBox(length(data$Influence.score.of.the.users),
+         icon = "fa-user")
+```
+
+###  
+
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
