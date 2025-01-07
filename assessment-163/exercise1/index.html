@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card with Flip Effect</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card-container">
+    <div class="card" id="card">
+      <div class="card-front">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.7iR613qBLOSdafuBRV_d3QHaFK&pid=Api&P=0&h=180" width="200" alt="Card Image" class="card-image">
+        <h2 class="card-title">ZORO</h2>
+        <button class="info-button" onclick="toggleFlip()">More Info</button>
+      </div>
+      <div class="card-back">
+        <p>Roronoa Zoro, also known as "Pirate Hunter" Zoro, is a fictional character created by Japanese manga artist Eiichiro Oda who appears in the manga series and media franchise One Piece. </p>
+        <button class="info-button" onclick="toggleFlip()">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
