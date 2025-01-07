@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 200px;
+        }
+
+        .dropdown-button {
+            width: 100%;
+            padding: 10px;
+            background: #e8070b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+        }
+
+        .dropdown-button::after {
+            content: '\25BC';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 10;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: #f4f4f4;
+        }
+
+        .selected-value {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="dropdown-button" id="dropdownButton">Select an option</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item" data-value="Option 1">Indusrty</div>
+            <div class="dropdown-item" data-value="Option 2">Agriculture</div>
+            <div class="dropdown-item" data-value="Option 3">Medical</div>
+        </div>
+    </div>
+    <div class="selected-value" id="selectedValue">Selected: None</div>
+
+    <script>
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const selectedValue = document.getElementById('selectedValue');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const value = item.dataset.value;
+                selectedValue.textContent = `Selected: ${value}`;
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
