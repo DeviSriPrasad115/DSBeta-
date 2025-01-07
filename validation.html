@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Form Validation</title>
+  <link rel="stylesheet" href="validation.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Sign Up Form</h2>
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <span class="validation-message" id="email-validation-message"></span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <span class="validation-message" id="password-validation-message"></span>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="validation.js"></script>
+</body>
+</html>
