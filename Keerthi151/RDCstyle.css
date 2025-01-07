@@ -1,0 +1,66 @@
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Make the card full screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;   /* Ensure image takes full width */
+    height: 100vh; /* Ensure image takes full height of the viewport */
+    object-fit: cover; /* Make sure the image maintains its aspect ratio and fills the screen */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+h2 {
+    position: absolute;
+    color: white;
+    z-index: 1;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+p {
+    position: absolute;
+    color: white;
+    z-index: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    bottom: 70px; /* Place it just above the "Learn More" button */
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%); /* Center the text horizontally */
+}
+
+a {
+    position: absolute;
+    bottom: 20px; /* This keeps the "Learn More" button at the bottom of the screen */
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
