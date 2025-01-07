@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Navigation</title>
+  <style>
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    
+    .tab-btn {
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      background: #ddd;
+      border: none;
+      outline: none;
+    }
+    
+    .tab-btn.active {
+      background: #333;
+      color: white;
+    }
+    
+    .tab {
+      display: none;
+    }
+    
+    .tab.active {
+      display: block;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab1">Tab 1</button>
+    <button class="tab-btn" data-tab="tab2">Tab 2</button>
+    <button class="tab-btn" data-tab="tab3">Tab 3</button>
+  </div>
+  <div class="tab-content">
+    <div id="tab1" class="tab active">This is content for Tab 1.</div>
+    <div id="tab2" class="tab">This is content for Tab 2.</div>
+    <div id="tab3" class="tab">This is content for Tab 3.</div>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(btn => btn.classList.remove('active'));
+    tab.classList.add('active');
+
+    tabContents.forEach(content => content.classList.remove('active'));
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+  </script>
+</body>
+</html>
