@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="script" href="script.js">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card</title>
+</head>
+<body>
+    <div>
+    <nav id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="card-container">
+        <div class="card" id="card">
+          <div class="card-front">
+            <h3>2211cs030120</h3>
+          </div>
+          <div class="card-back">
+            <p>Information</p>
+          </div>
+        </div>
+        <button class="card-button" onclick="toggleCard()">Flip</button>
+      </div>
+
+      <div class="slider">
+        <div class="slides" id="slides">
+          <img src="image1.jpg" alt="Image 1">
+          <img src="image2.jpg" alt="Image 2">
+          <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="dots">
+          <span class="dot" onclick="currentSlide(0)"></span>
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+      </div>
+
+      <div>
+        <form id="form">
+            <div class="form-control">
+              <input type="email" id="email" placeholder="Email">
+              <small class="error" id="emailError"></small>
+            </div>
+            <div class="form-control">
+              <input type="password" id="password" placeholder="Password">
+              <small class="error" id="passwordError"></small>
+            </div>
+            <button type="submit"  >Submit</button>
+          </form>
+      </div>
+      
+</body>
+</html>
