@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Flip Card</title>
+  <link rel="stylesheet" href="stylegc.css">
+</head>
+<body>
+  <div class="card-container">
+    <div class="card" id="flipCard">
+      <div class="card-front">
+        <img src="download (1).jpg" alt="Beautiful Scenery" class="card-image">
+        <h3 class="card-title">Explore Nature</h3>
+        <button class="flip-button" onclick="toggleFlip()">More Info</button>
+      </div>
+      <div class="card-back">
+        <h3 class="card-back-title">About Nature</h3>
+        <p class="card-description">Nature offers breathtaking landscapes, lush greenery, and serene environments that rejuvenate the soul.</p>
+        <button class="flip-button" onclick="toggleFlip()">Go Back</button>
+      </div>
+    </div>
+  </div>
+  <script src="scriptgc.js"></script>
+</body>
+</html>
