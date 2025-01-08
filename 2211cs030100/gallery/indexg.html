@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Gallery with Filtering</title>
+  <link rel="stylesheet" href="styleg.css">
+</head>
+<body>
+  <div class="gallery-container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+      <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
+      <button class="filter-btn" onclick="filterGallery('animals')">Animals</button>
+      <button class="filter-btn" onclick="filterGallery('cities')">Cities</button>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item nature">
+        <img src="nature.png" alt="Nature 1">
+      </div>
+      <div class="gallery-item animals">
+        <img src="animal.jpg" alt="Animals 1">
+      </div>
+      <div class="gallery-item cities">
+        <img src="city.jpg" alt="Cities 1">
+      </div>
+      <div class="gallery-item nature">
+        <img src="nature2.jpg" alt="Nature 2">
+      </div>
+      <div class="gallery-item animals">
+        <img src="animal.jpg" alt="Animals 2">
+      </div>
+      <div class="gallery-item cities">
+        <img src="city2.jpg" alt="Cities 2">
+      </div>
+    </div>
+  </div>
+  <script src="scriptg.js"></script>
+</body>
+</html>

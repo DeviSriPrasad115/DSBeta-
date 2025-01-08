@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Bar with Steps</title>
+  <link rel="stylesheet" href="stylepb.css">
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-steps">
+      <div class="step active" data-step="1">1</div>
+      <div class="step" data-step="2">2</div>
+      <div class="step" data-step="3">3</div>
+      <div class="step" data-step="4">4</div>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="form-step active">
+      <h2>Step 1</h2>
+      <p>Welcome to the multi-step form!</p>
+      <button class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+    <div class="form-step">
+      <h2>Step 2</h2>
+      <p>Fill in your details here.</p>
+      <button class="prev-btn" onclick="prevStep()">Previous</button>
+      <button class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+    <div class="form-step">
+      <h2>Step 3</h2>
+      <p>Review your information.</p>
+      <button class="prev-btn" onclick="prevStep()">Previous</button>
+      <button class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+    <div class="form-step">
+      <h2>Step 4</h2>
+      <p>Thank you for completing the form!</p>
+      <button class="prev-btn" onclick="prevStep()">Previous</button>
+    </div>
+  </div>
+  <script src="scriptpb.js"></script>
+</body>
+</html>
