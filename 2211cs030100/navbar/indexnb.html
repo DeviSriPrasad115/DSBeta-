@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Tab Navigation</title>
+  <link rel="stylesheet" href="stylenb.css">
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tab-header">
+      <button class="tab-btn active" onclick="switchTab(event, 'tab1')">Home</button>
+      <button class="tab-btn" onclick="switchTab(event, 'tab2')">About</button>
+      <button class="tab-btn" onclick="switchTab(event, 'tab3')">Services</button>
+      <button class="tab-btn" onclick="switchTab(event, 'tab4')">Contact</button>
+    </div>
+    <div class="tab-content">
+      <div id="tab1" class="tab-pane active">
+        <h2>Welcome Home</h2>
+        <p>Home is where the heart is. Relax and feel at home.</p>
+      </div>
+      <div id="tab2" class="tab-pane">
+        <h2>About Us</h2>
+        <p>We are a company committed to excellence and innovation.</p>
+      </div>
+      <div id="tab3" class="tab-pane">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of services tailored to your needs.</p>
+      </div>
+      <div id="tab4" class="tab-pane">
+        <h2>Contact Us</h2>
+        <p>Reach out to us anytime, and we’ll be happy to assist you!</p>
+      </div>
+    </div>
+  </div>
+  <script src="scriptnb.js"></script>
+</body>
+</html>
