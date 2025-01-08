@@ -1,0 +1,62 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Accordion container */
+  .accordion {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  /* Accordion item */
+  .accordion-item {
+    border-top: 1px solid #ddd;
+  }
+  
+  .accordion-header {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion-header:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Accordion body hidden by default */
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #f9f9f9;
+    transition: max-height 0.5s ease-out, padding 0.3s ease;
+  }
+  
+  /* Active state: when accordion is open */
+  .accordion-item.active .accordion-body {
+    max-height: 500px; /* Set a large value to fully expand the content */
+    padding: 15px;
+  }
+  
+  /* Optional: Add smooth transition to content inside */
+  .accordion-body p {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+  
+  /* Optional: Adjust first item for no top border */
+  .accordion-item:first-child .accordion-header {
+    border-top: none;
+  }
+  
