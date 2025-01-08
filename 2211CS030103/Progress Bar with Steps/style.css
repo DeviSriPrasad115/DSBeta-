@@ -1,0 +1,38 @@
+.progress-bar {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    height: 30px;
+    margin: 30px 5px 30px ;
+}
+
+.progress {
+    background-color: rgb(175, 15, 15);
+    color: white;
+    transition: width 0.3s ease;
+    line-height: 30px;
+
+}
+
+.progress-box {
+    width: 300px;
+    height: 200px;
+    background-color: rgb(81, 87, 92);
+    margin: 100px 460px ;
+    border: 3px solid black;
+    border-radius: 20px;
+}
+.upgrade{
+    margin-left: 30px;
+    margin-right: 70px;
+}
+.degrade {
+    margin-right: 0px;;
+}
+.upgrade ,.degrade{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
