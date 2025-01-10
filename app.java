@@ -90,12 +90,44 @@ class test{
         
 
         //priority queue in java
-        PriorityQueue <Integer> pq = new PriorityQueue<>();
-        PriorityQueue <Integer> pq1 = new PriorityQueue<>(Comparator.reverseOrder());
-        pq.add(a);
+        PriorityQueue <Integer> pq = new PriorityQueue<>(); // minimum priortity queue
+        PriorityQueue <Integer> pq1 = new PriorityQueue<>(Collections.reverseOrder()); //reverse order Max priortity queue
+        pq.add(10);
+        pq.add(20);
+        pq.add(30);
+        pq.offer(1000);
+        pq.poll();
         System.out.println(pq);
+        pq1.add(10);
+        pq1.add(20);
+        pq1.add(30);
+        pq1.offer(1000);
+        pq1.poll();
+        System.out.println(pq1);
+
+
+        //hashset in java
+        HashSet <String> set = new HashSet<>(100,0.75f);
+        HashSet <Integer> hs = new HashSet<>(List.of(1,2,3,4,5,6));
+        //union
+        //set.addAll(hs);
+        System.out.println(hs);
+        //intersetion
+        hs.retainAll(set);
+        //diff
+        hs.removeAll(set);
+
+        //set data structured ==hashtable used to implement it
+        Hashtable <String, Integer> ht = new Hashtable<>();
+        ht.put("Apple", 10);
+        ht.put("gekyume",100);
+        System.out.println(ht);
+        System.out.println(ht.keys());
+
+        //map
+        Map <String,Integer> map = new HashMap<>() ;
+
 
         
-
     }   
 }
