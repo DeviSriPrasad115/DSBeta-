@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar with Scroll Highlight</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+            color: #f0f0f0;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        #home { background: #f4a261; }
+        #about { background: #2a9d8f; }
+        #services { background: #e9c46a; }
+        #contact { background: #264653; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="home">Home Section</section>
+    <section id="about">About Section</section>
+    <section id="services">Services Section</section>
+    <section id="contact">Contact Section</section>
+
+    <script>
+        const navbarLinks = document.querySelectorAll('.navbar a');
+        const sections = document.querySelectorAll('section');
+
+        function updateActiveLink() {
+            let index = sections.length;
+
+            while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+            navbarLinks.forEach((link) => link.classList.remove('active'));
+            navbarLinks[index].classList.add('active');
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+    </script>
+</body>
+</html>

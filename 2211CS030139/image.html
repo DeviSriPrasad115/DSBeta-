@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image slider and dots</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e2f;
+            color: white;
+        }
+
+        .memory-carousel {
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            background: #28293e;
+        }
+
+        .image-container {
+            display: flex;
+            transform: translateX(0);
+            transition: transform 1s ease-in-out;
+        }
+
+        .image-container img {
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container img.active {
+            opacity: 1;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .memory-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .memory-button:hover {
+            background: #6be582;
+        }
+
+        .hint {
+            margin-top: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="memory-carousel">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1573497019413-c20734462209?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Memory 1" class="active">
+            <img src="https://images.unsplash.com/photo-1552083375-4a9a6c6a169f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Memory 2">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Memory 3">
+        </div>
+        <div class="controls">
+            <button class="memory-button" data-index="0">Reveal Memory 1</button>
+            <button class="memory-button" data-index="1">Reveal Memory 2</button>
+            <button class="memory-button" data-index="2">Reveal Memory 3</button>
+        </div>
+        <div class="hint">Click on buttons to reveal memories one by one!</div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.memory-button');
+        const images = document.querySelectorAll('.image-container img');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const index = parseInt(button.dataset.index);
+                images.forEach(img => img.classList.remove('active'));
+                images[index].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

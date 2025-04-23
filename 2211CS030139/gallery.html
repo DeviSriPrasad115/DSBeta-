@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #eee;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #ddd;
+        }
+
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Image Gallery</h1>
+
+    <div class="tabs">
+        <div class="tab active" data-category="all">All</div>
+        <div class="tab" data-category="nature">Nature</div>
+        <div class="tab" data-category="animals">Animals</div>
+        <div class="tab" data-category="style">Style</div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Nature 1">
+            <div class="overlay">
+                <div class="overlay-text">Nature 1</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="animals">
+            <img src="https://images.app.goo.gl/VELWbcTmm97q7s8p9" alt="Animals 1">
+            <div class="overlay">
+                <div class="overlay-text">Animals 1</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="style">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Style 1">
+            <div class="overlay">
+                <div class="overlay-text">Style 1</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1592194996305-c3c762784b5c" alt="Nature 2">
+            <div class="overlay">
+                <div class="overlay-text">Nature 2</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="animals">
+            <img src="https://images.unsplash.com/photo-1556788191-45f24c5d2f9a" alt="Animals 2">
+            <div class="overlay">
+                <div class="overlay-text">Animals 2</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="style">
+            <img src="https://images.unsplash.com/photo-1526382925646-5f35f3b37ef0" alt="Style 2">
+            <div class="overlay">
+                <div class="overlay-text">Style 2</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and add to clicked tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Get category from clicked tab
+                const category = tab.dataset.category;
+
+                // Filter gallery items based on category
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
