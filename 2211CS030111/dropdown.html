@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+    }
+
+    /* Button that opens the dropdown */
+    .dropdown-button {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-button:hover {
+      background-color: #575757;
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Dropdown options */
+    .dropdown-menu a {
+      padding: 12px 16px;
+      display: block;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    /* For displaying selected value */
+    .selected-value {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dropdown">
+    <button class="dropdown-button">Select an option</button>
+    <div class="dropdown-menu">
+      <a href="#" onclick="selectOption('Option 1')">Option 1</a>
+      <a href="#" onclick="selectOption('Option 2')">Option 2</a>
+      <a href="#" onclick="selectOption('Option 3')">Option 3</a>
+      <a href="#" onclick="selectOption('Option 4')">Option 4</a>
+    </div>
+  </div>
+
+  <div class="selected-value" id="selected-value">Selected: None</div>
+
+  <script>
+    // Get the dropdown elements
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    // Toggle the dropdown menu when the button is clicked
+    dropdownButton.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('show');
+    });
+
+    // Function to update the selected value
+    function selectOption(option) {
+      // Update the button text and close the menu
+      dropdownButton.textContent = option;
+      dropdownMenu.classList.remove('show');
+
+      // Update the selected value display
+      document.getElementById('selected-value').textContent = `Selected: ${option}`;
+    }
+
+    // Close the dropdown menu if clicked outside
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+  </script>
+
+</body>
+</html>
