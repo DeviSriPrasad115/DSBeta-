@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    form {
+      width: 300px;
+      margin: 20px auto;
+    }
+    
+    input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    
+    .error {
+      color: red;
+      font-size: 0.9em;
+      height: 1em;
+    }
+    
+  </style>
+</head>
+<body>
+  <form id="form">
+    <input type="email" id="email" placeholder="Enter your email">
+    <input type="password" id="password" placeholder="Enter your password">
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      let isValid = true;
+    
+      if (!email.includes('@')) {
+        document.getElementById('emailError').textContent = 'Invalid email!';
+        isValid = false;
+      } else {
+        document.getElementById('emailError').textContent = '';
+      }
+    
+      if (password.length < 6) {
+        document.getElementById('passwordError').textContent = 'Password too short!';
+        isValid = false;
+      } else {
+        document.getElementById('passwordError').textContent = '';
+      }
+    
+      if (isValid) alert('Form submitted successfully!');
+    });
+    
+  </script>
+</body>
+</html>
