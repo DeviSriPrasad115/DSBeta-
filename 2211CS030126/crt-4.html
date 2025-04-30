@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tab Navigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .tabs button {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .tabs button.active {
+            background-color: #333;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .tabs button:hover {
+            background-color: #ddd;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs">
+        <button class="tab-link active" data-tab="tab1">Tab 1</button>
+        <button class="tab-link" data-tab="tab2">Tab 2</button>
+        <button class="tab-link" data-tab="tab3">Tab 3</button>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+        <h2>FSD(FULL STACK DEVELOPMENT)</h2>
+        <p>A full-stack developer is a developer or engineer who can build both a website's front and back end. The front end (the parts of a website a user sees and interacts with) and the back end (the behind-the-scenes data storage and processing) require
+            different skill sets.</p>
+    </div>
+    <div id="tab2" class="tab-content">
+        <h2>(WDD) WEB DESIGN AND DEVELOPMENT</h2>
+        <p>Web designers prioritize the site's visual appeal and usability, focusing on layout, color schemes, and navigation that improve user experience.</p>
+    </div>
+    <div id="tab3" class="tab-content">
+        <h2>DD(DISTRIBUTED DATABASE)</h2>
+        <p>A distributed database is a database that runs and stores data across multiple computers, as opposed to doing everything on a single machine.</p>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-link');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

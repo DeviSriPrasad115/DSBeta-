@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <title>Animated Navigation Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff9800;
+        }
+        
+        nav ul li a.active {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        section {
+            height: 100vh;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        
+        section:nth-child(odd) {
+            background: #f4f4f4;
+        }
+        
+        section:nth-child(even) {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">Home Section</section>
+    <section id="about">About Section</section>
+    <section id="services">Services Section</section>
+    <section id="contact">Contact Section</section>
+
+    <script>
+        // Highlight active section on scroll
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 50;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
