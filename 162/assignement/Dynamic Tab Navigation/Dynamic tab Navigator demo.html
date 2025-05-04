@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Tab Navigation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .tab-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px 15px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      background: #f0f0f0;
+      color: #333;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .tab:hover {
+      background: #ddd;
+    }
+
+    .tab.active {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .tab-content {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tabs">
+      <button class="tab active" data-tab="tab1">Tab 1</button>
+      <button class="tab" data-tab="tab2">Tab 2</button>
+      <button class="tab" data-tab="tab3">Tab 3</button>
+    </div>
+    <div class="tab-content">
+      <div id="tab1" class="content active">Content for Tab 1</div>
+      <div id="tab2" class="content">Content for Tab 2</div>
+      <div id="tab3" class="content">Content for Tab 3</div>
+    </div>
+  </div>
+
+  <script>
+    // Select all tabs and content
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    // Add click event listeners to each tab
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        // Remove 'active' class from all tabs and contents
+        tabs.forEach((tab) => tab.classList.remove('active'));
+        contents.forEach((content) => content.classList.remove('active'));
+
+        // Add 'active' class to the clicked tab
+        tab.classList.add('active');
+
+        // Display the corresponding content
+        const target = tab.getAttribute('data-tab');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
