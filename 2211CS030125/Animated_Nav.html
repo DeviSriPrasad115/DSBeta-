@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage with Animated Navigation Bar and Responsive Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+        nav.scrolled {
+            background-color: #555;
+        }
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #777;
+            border-radius: 5px;
+        }
+        nav ul li a.active {
+            background-color: #999;
+            color: white;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 80px 20px 20px; /* Adjusted padding for fixed nav */
+            text-align: center;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+        .card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .card a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 50px 20px;
+            min-height: 100vh;
+        }
+        section:nth-child(odd) {
+            background: #f4f4f4;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('nav');
+            const links = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('section');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - nav.offsetHeight;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo">My Website</div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="home" class="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is a simple webpage with an animated navigation bar and responsive card design.</p>
+    </div>
+    <section id="about">
+        <h2>About</h2>
+        <p>This is the about section of the webpage.</p>
+    </section>
+    <section id="services">
+        <h2>Services</h2>
+        <p>Details about services go here.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Contact information can be found here.</p>
+    </section>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <h3>Card Title 1</h3>
+            <p>This is a description for card 1. Add more details here.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <h3>Card Title 2</h3>
+            <p>This is a description for card 2. Add more details here.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <h3>Card Title 3</h3>
+            <p>This is a description for card 3. Add more details here.</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>
+</body>
+</html>
