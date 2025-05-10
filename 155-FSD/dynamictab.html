@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tab Navigation</title>
+    <link rel="stylesheet" href="dynamictab.css">
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab(0)">Tab 1</div>
+            <div class="tab" onclick="showTab(1)">Tab 2</div>
+            <div class="tab" onclick="showTab(2)">Tab 3</div>
+        </div>
+        <div class="tab-content">
+            <div class="content active">
+                <h2>Welcome to Tab 1</h2>
+                <p>This is the content for Tab 1.</p>
+            </div>
+            <div class="content">
+                <h2>Discover Tab 2</h2>
+                <p>This is the content for Tab 2.</p>
+            </div>
+            <div class="content">
+                <h2>Explore Tab 3</h2>
+                <p>This is the content for Tab 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="dynamictab.js"></script>
+</body>
+</html>

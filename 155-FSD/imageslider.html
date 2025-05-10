@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with Dots</title>
+    <link rel="stylesheet" href="imageslider.css">
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide active"><img src="https://images.news18.com/ibnlive/uploads/2024/06/pawan-kalyan-jsp-wins-ap-elections-2024-06-99f15177bd1b30472ba925acfb5d00ea.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="https://images.indianexpress.com/2024/06/pk.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="https://www.pinkvilla.com/images/2024-06/569502597_fotojet-2024-06-06t152156-643-1.jpg" alt="Image 3"></div>
+        </div>
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
+
+    <script src="imageslider.js"></script>
+</body>
+</html>

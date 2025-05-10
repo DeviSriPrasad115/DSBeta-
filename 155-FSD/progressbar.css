@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#progressbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 14px;
+}
+
+#progressbar li.active {
+    color: #4CAF50; /* Active step color */
+}
+
+.progress {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.indicator {
+    height: 5px;
+    background-color: #4CAF50; /* Progress bar color */
+    width: 0%;
+    transition: width 0.4s ease-in-out; /* Smooth transition */
+}
+
+.step {
+    display: none; /* Hide all steps initially */
+}
+
+.step.active {
+    display: block; /* Show active step */
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Button hover effect */
+}
