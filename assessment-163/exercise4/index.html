@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown Menu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dropdown">
+    <button class="dropdown-btn" id="dropdownBtn">
+      Select an option
+      <span class="arrow">▼</span>
+    </button>
+    <ul class="dropdown-menu" id="dropdownMenu">
+      <li class="dropdown-item" data-value="Luffy">Luffy</li>
+      <li class="dropdown-item" data-value="Zoro">Zoro</li>
+      <li class="dropdown-item" data-value="Sanji">Sanji</li>
+      <li class="dropdown-item" data-value="Franky">Franky</li>
+      <li class="dropdown-item" data-value="None">None</li>
+    </ul>
+  </div>
+
+  <div class="selected-value" id="selectedValue">
+    Selected: None
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
