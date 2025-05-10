@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Flip Card</title>
+    <title>Responsive Card with Flip Effect</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
 
         .card-container {
             perspective: 1000px;
+            width: 300px;
+            height: 400px;
         }
 
         .card {
-            width: 300px;
-            height: 400px;
             position: relative;
+            width: 100%;
+            height: 100%;
             transform-style: preserve-3d;
-            transition: transform 0.6s;
+            transition: transform 0.8s;
         }
 
         .card.flipped {
@@ -38,7 +45,7 @@
             backface-visibility: hidden;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .card-front {
@@ -47,79 +54,82 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            padding: 20px;
         }
 
         .card-front img {
             width: 100%;
-            height: 60%;
-            object-fit: cover;
+            height: auto;
+            border-radius: 10px;
         }
 
-        .card-front h2 {
-            margin: 10px;
-            font-size: 1.5rem;
-            color: #333;
+        .card-front h3 {
+            margin: 15px 0;
         }
 
         .card-back {
-            background: #9f5b99;
-            color: #fff;
+            background: #007BFF;
+            color: rgb(237, 248, 249);
+            transform: rotateY(180deg);
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
         }
 
-        .toggle-btn {
+        .toggle-button {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #bccbdb;
-            color: #fff;
             border: none;
+            background-color: #0cabc0;
+            color: rgb(26, 31, 114);
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
 
-        .toggle-btn:hover {
+        .toggle-button:hover {
             background-color: #0056b3;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .card {
-                width: 80%;
+            .card-container {
+                width: 90%;
                 height: auto;
             }
 
             .card-front img {
-                height: auto;
-            }
-
-            .toggle-btn {
-                width: 100%;
+                height: 200px;
+                object-fit: cover;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card-container">
-        <div class="card" id="flipCard">
-            <div class="card-face card-front">
-                <img src="card.png" alt="Placeholder Image">
-                <h2>response card</h2>
-            </div>
-            <div class="card-face card-back">
-                <p>A responsive card is a card-like element that adapts to different screen sizes and arrangements to ensure an optimal viewing experience across devices. Responsive cards can be created using CSS, Flexbox, and CSS Grid.</p>
+    <div>
+        <div class="card-container">
+            <div class="card" id="card">
+                <div class="card-face card-front">
+                    <img src="https://codingartistweb.com/wp-content/uploads/2020/10/grid-cards-small-01-1024x576.png" alt="Card Image">
+                    <h3>Card Title</h3>
+                    <p>Click below for more info.</p>
+                </div>
+                <div class="card-face card-back">
+                    <p>Here is more information about this card. Flip it back to see the front again!</p>
+                </div>
             </div>
         </div>
-        <button class="toggle-btn" id="toggleFlip">Toggle Flip</button>
+        <button class="toggle-button" id="toggleButton">Toggle Flip</button>
     </div>
 
     <script>
-        const card = document.getElementById('flipCard');
-        const button = document.getElementById('toggleFlip');
+        const card = document.getElementById('card');
+        const toggleButton = document.getElementById('toggleButton');
 
-        button.addEventListener('click', () => {
+        toggleButton.addEventListener('click', () => {
             card.classList.toggle('flipped');
         });
     </script>
